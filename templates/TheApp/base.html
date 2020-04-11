@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Modern Business - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+<<<<<<< HEAD
+    <link rel="stylesheet" href="{% static "css/style.css" %}"/>
+=======
+    <link href="{% static 'css/modern-business.css' %}" rel="stylesheet">
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+>>>>>>> master
+    <title></title>
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <div class="fixed-top">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'TheApp:index' %}">ME-POST</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+
+
+            {% if user.is_authenticated %}
+                      <li><a class= 'nav-link' href="{% url 'logout' %}">Logout</a></li>
+                      <li><a class="nav-link" href="{% url 'TheApp:personalposts' %}">{{ user.username }}</a></li>
+                      <li><a class="nav-link" href="{% url 'TheApp:post_form' %}">New Post</a></li>
+                      <li><a class="nav-link" href="{% url 'TheApp:post_list' %}">Explore</a></li>
+                      <li><a class="nav-link" href="{% url 'TheApp:top_posts' %}">Top Posts</a></li>
+
+                      {% else %}
+                      <li><a class= 'nav-link' href="{% url 'TheApp:user_login' %}">Login</a></li>
+                      {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    </div>
+
+
+    <!-- Footer -->
+    <div class="fixed-bottom" id="bottom">
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; ME-POST 2020</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+    </div>
+
+
+<div class="container">
+
+  {% block body_block %}
+
+  {% endblock %}
+</div>
+
+  </body>
+</html>

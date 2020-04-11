@@ -1,0 +1,28 @@
+<!--רשימה של כל הפוסטים שנוצרו. נמצאת תחת הלינק בסרגל למעלה עם השם של המשתמש-->
+
+{% extends "TheApp/base.html" %}
+{% load static %}
+{% block body_block %}
+
+{% if thelist %}
+<div class="container" style = "padding-bottom: 130px; margin:auto;">
+  {% for post in thelist|slice:":4" %} <!-- עשיתי שהמערך שחוזר יכיל רק 4 ערכים -->
+
+  <div class="post" style="border-style:ridge; border-radius: 5px; padding: 10px;">
+    <h4><a href="{% url 'TheApp:post_detail' pk=post.pk %}">{{ post.title }}</a></h4>
+
+      <p>Published on: {{post.create_date|date:"D M Y"}}</p>
+      <p>By: {{post.author}}</p>
+    
+    <a href="{% url 'TheApp:post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
+  </div>
+  <br>
+  {% endfor %}
+</div>
+
+{% else %}
+<h2>No Posts Created</h2>
+
+
+{% endif %}
+{% endblock %}

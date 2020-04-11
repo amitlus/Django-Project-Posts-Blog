@@ -1,0 +1,32 @@
+{% extends "TheApp/base.html" %}
+{% load static %}
+{% customfilters %}
+
+{% block body_block %}
+<<<<<<< HEAD
+
+<h1 style="margin-bottom:20px; margin-top:60px; background-color:#e6e6e6;">New Post</h1>
+<form method="POST">
+  {% csrf_token %}
+  {{form.title.label_tag}}
+  {{ form.title|addclass:'MyClass' }} <!--למעשה יישמתי פה את הפילטר שיצרתי. עשיתי לו טעינה למעלה ואז השתמשתי בו על הווידגט עצמו מה שלא יכולתי לעשות עם קלאס רגיל-->
+
+  <br>
+  <label class="MyClass">{{ form.text.label_tag }}</label>
+  {{form.text}}
+  <br>
+  <button type="submit" class='btn btn-primary' name="button">Save</button>
+</form>
+<!--זה מעביר אותי דף הודות ל get_absolute_url שכתבתי במודל
+=======
+<h1>New Post</h1>
+<form class="post-form" method="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button type="submit" class='btn btn-primary' name="button">Save</button>
+</form>
+>>>>>>> master
+
+<!--<script>var editor = new MediumeEditor('.editable');</script>-->
+<!-- משויך לפי השם שלו לCreateView -->
+{% endblock %}

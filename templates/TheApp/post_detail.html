@@ -1,0 +1,60 @@
+{% extends "TheApp/base.html" %}
+{% load static %}
+{% block body_block %}
+
+
+<h1 class="container">{{post.title}}</h1>
+<div class="container">
+  {{ post.create_date }}
+</div>
+
+
+<p class='postcontent'>{{ post.text }}</p>
+
+<p class='container'>Created By: {{ post.author }}</p>
+
+
+
+<!-- כל משתמש מחובר יכול להוסיף תגובה -->
+{% if user.is_authenticated %}
+  <hr>
+  <a class='btn btn-primary btn-comment' href="{% url 'TheApp:add_comment_to_post' pk=post.pk %}">Add Comment</a>
+
+
+<!-- רק אם פוסט שייך למשתמש המחובר אז הוא יוכל לערוך או למחוק אותו -->
+  {% if user == post.author %}
+
+    <a class='btn btn-primary' href="{% url 'TheApp:post_edit' pk=post.pk %}">EDIT</a>
+
+    <a class='btn btn-primary' href="{% url 'TheApp:post_remove' pk=post.pk %}">DELETE</a>
+
+  {% endif %}
+{% endif %}
+
+
+
+<div class="container">
+  {% for comment in post.comments.all %}
+  <br>
+  {{comment.create_date}}
+  <p>{{comment.text|safe|linebreaks}}</p>
+  <p>Posted by: {{comment.author}}</p>
+  <br>
+
+<!-- אם המשתמש מחובר והוא זה שכתב את התגובה או את הפוסט, הוא יהיה רשאי למחוק את התגובה -->
+  {% if user.is_authenticated %}
+    {% if user.username == comment.author or user == post.author %} <!-- כי פוסט.אוטור הוא למעשה מופע של User אז צריך להשוות את היוזר ולא את היוזר.שם -->
+
+    <a class='btn btn-primary' href="{% url 'TheApp:comment_remove' pk=comment.pk %}">Remove</a>
+
+
+  {% endif %}
+{% endif %}
+  {% empty %}
+  <p>No Comments</p>
+  {% endfor %}
+
+
+</div>
+
+{% endblock %}

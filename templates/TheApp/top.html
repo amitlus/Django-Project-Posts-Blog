@@ -1,0 +1,22 @@
+{% extends "TheApp/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="container" style = "padding-bottom: 130px; margin:auto;">
+{% for post in top_posts|slice:":5" %}
+<div class="post" style="border-style:ridge; border-radius: 5px; padding: 10px;">
+
+
+<h4><a href="{% url 'TheApp:post_detail' pk=post.pk %}">{{ post.title }}</a></h4>
+
+<p>Published on: {{post.create_date|date:"D M Y"}}</p>
+<p>By: {{post.author}}</p>
+<p>Views: {{ post.post_views }}</p>
+
+
+</div>
+<br>
+{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "TheApp/base.html" %}
+
+{% load static %}
+{% block body_block %}
+
+<div class="container" style="padding-bottom: 130px; margin:auto;">
+
+{% for item in items %}
+  <div class="container" style="border-style:ridge; border-radius: 5px;">
+      <h4><a href="{% url 'TheApp:post_detail' pk=item.pk %}">{{item|linebreaks}}</a></h4>
+      <p>Published on: {{item.create_date|date:"D M Y"}}</p>
+      <p>By: {{item.author}}</p>
+      <a href="{% url 'TheApp:post_detail' pk=item.pk %}">Comments: {{ item.comments.count }}</a>
+  </div>
+  <br>
+
+{%endfor%}
+</div>
+{% endblock %}
