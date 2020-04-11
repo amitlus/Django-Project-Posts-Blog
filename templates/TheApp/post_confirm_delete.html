@@ -1,9 +1,12 @@
 {% extends "TheApp/base.html" %}
 {% load static %}
 {% block body_block %}
+<div class="container" style="margin-top:50px;">
   <form method="post">
     {% csrf_token %}
-    <p>Are you sure you want to delete {{ object }}?</p>
+    <p>Are you sure you want to delete '{{ object }}'?</p>
     <input class="btn btn-danger" type="submit"  value="Yes">
   </form>
+</div>
+
 {% endblock %}

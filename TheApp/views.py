@@ -127,11 +127,19 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     form_class = PostForm
     model = Post
 
+    def get_queryset(self):
+        author = self.request.user
+        return self.model.objects.filter(author=author) #הפונקציה הזו בעצם מאפשרת רק למי שהוא בעל הפוסט להיכנס לערוך אותו. גם אם למישהו תהיה הכתובת זה לא יעזור לו
+
+
+
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('TheApp:post_list')
 
-
+    def get_queryset(self):
+        author = self.request.user
+        return self.model.objects.filter(author=author)
 
 
 ############################################################################################

@@ -3,21 +3,18 @@
 {% block body_block %}
 
 
-<h1 class="container">{{post.title}}</h1>
-<div class="container">
+<div class="container" style="margin-top:50px; margin-bottom:20px;">
+  <h1>{{post.title}}</h1>
   {{ post.create_date }}
-</div>
 
+<p>{{ post.text }}</p>
 
-<p class='postcontent'>{{ post.text }}</p>
-
-<p class='container'>Created By: {{ post.author }}</p>
-
+<p>Created By: {{ post.author }}</p>
 
 
 <!-- כל משתמש מחובר יכול להוסיף תגובה -->
 {% if user.is_authenticated %}
-  <hr>
+
   <a class='btn btn-primary btn-comment' href="{% url 'TheApp:add_comment_to_post' pk=post.pk %}">Add Comment</a>
 
 
@@ -30,10 +27,9 @@
 
   {% endif %}
 {% endif %}
+</div>
 
-
-
-<div class="container">
+<div class="container" style="margin-bottom:100px;">
   {% for comment in post.comments.all %}
   <br>
   {{comment.create_date}}
