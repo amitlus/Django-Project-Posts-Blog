@@ -129,7 +129,7 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_queryset(self):
         author = self.request.user
-        return self.model.objects.filter(author=author) #הפונקציה הזו בעצם מאפשרת רק למי שהוא בעל הפוסט להיכנס לערוך אותו. גם אם למישהו תהיה הכתובת זה לא יעזור לו
+        return self.model.objects.filter(author=author) #הפונקציה הזו בעצם מאפשרת רק למי שהוא בעל הפוסט להיכנס לערוך אותו. גם אם למישהו תהיה הכתובת זה לא יעזור ל
 
 
 
@@ -137,9 +137,6 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('TheApp:post_list')
 
-    def get_queryset(self):
-        author = self.request.user
-        return self.model.objects.filter(author=author)
 
 
 ############################################################################################
@@ -176,12 +173,15 @@ def comment_remove(request, pk):
     else:
          return HttpResponse('You are not the author of this comment. Access denied')
 
-
-def personalposts(request):
-    items = Post.objects.filter(author=request.user)
-    return render(request, 'TheApp/personalposts.html', {'items':items})
+@login_required
+def personalposts(request, username):
+    if username == request.user.username:#כדי לוודא שמה שהכנסנו בכתובת במקום <username> שווה לשם המשתמש המחובר ושרק הוא יוכל לעבור לדף הרתוי
+        items = Post.objects.filter(author__username=username)
+        return render(request, 'TheApp/personalposts.html', {'items':items})
+    else:
+        return HttpResponse('You are not {} of this comment. Access denied'.format(username))
 
 
 def top(request):
-    top_posts = Post.objects.order_by('-post_views')
+    top_posts = Post.objects.order_by('-post_views')# מסדר לפי צפיות מהגדול לקטן, בלי המינוס זה יהיה הפוך
     return render(request, 'TheApp/top.html', {'top_posts':top_posts})

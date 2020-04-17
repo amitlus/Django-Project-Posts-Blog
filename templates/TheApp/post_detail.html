@@ -1,5 +1,5 @@
 {% extends "TheApp/base.html" %}
-{% load static %}
+
 {% block body_block %}
 
 
@@ -12,6 +12,7 @@
 <p>{{ post.text }}</p>
 
 <p>Created By: {{ post.author }}</p>
+
 
 
 <!--כל משתמש מחובר יראה את הכפתור של הוספת התגובה -->
@@ -31,8 +32,10 @@
 {% endif %}
 </div>
 
-<div class="container" style="margin-bottom:120px;">
+<div class="container" style="margin-bottom:150px;">
   {% for comment in post.comments.all %}
+  <div class="Misgeret" style= "margin-bottom:20px;">
+
   <br>
   {{comment.create_date}}
   <p>{{comment.text|linebreaks}}</p> <!-- פילטר שיוצר רווח שורה -->
@@ -44,7 +47,7 @@
     {% if user.username == comment.author or user == post.author %} <!-- כי פוסט.אוטור הוא למעשה מופע של User אז צריך להשוות את היוזר ולא את היוזר.שם -->
 
     <a style="margin-bottom:20px;" class='btn btn-primary' href="{% url 'TheApp:comment_remove' pk=comment.pk %}">Remove</a>
-
+</div>
 
   {% endif %}
 {% endif %}

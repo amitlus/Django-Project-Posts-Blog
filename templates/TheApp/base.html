@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+{% load static %}
 
 <html lang="en" dir="ltr">
   <head>
@@ -16,6 +16,7 @@
     <!-- Custom styles for this template -->
 
     <link rel="stylesheet" href="{% static "css/style.css" %}"/>
+
 =======
 
 
@@ -40,7 +41,7 @@
 
             {% if user.is_authenticated %}
                       <li><a class= 'nav-link' href="{% url 'logout' %}">Logout</a></li>
-                      <li><a class="nav-link" href="{% url 'TheApp:personalposts' %}">{{ user.username }}</a></li>
+                      <li><a class="nav-link" href="{% url 'TheApp:personalposts' username=user.username %}">{{ user.username }}</a></li>
                       <li><a class="nav-link" href="{% url 'TheApp:post_form' %}">New Post</a></li>
                       <li><a class="nav-link" href="{% url 'TheApp:post_list' %}">Explore</a></li>
                       <li><a class="nav-link" href="{% url 'TheApp:top_posts' %}">Top Posts</a></li>

@@ -1,4 +1,10 @@
 .MyClass{
   background-color:#e6e6e6;
 }
-/* gray background to key words in forms like in NewPost and etc.
+/* gray background to key words in forms like in NewPost and etc. */
+
+.Misgeret{
+  border-style:ridge;
+  border-radius: 5px;
+  padding: 10px;
+}
