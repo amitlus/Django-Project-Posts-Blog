@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import (View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView)
 from. import models
-from TheApp.models import Post, Comment
+from TheApp.models import Post, Comment, UserProfileInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
 from TheApp.forms import PostForm, CommentForm
 from django.urls import reverse_lazy
@@ -137,6 +137,11 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('TheApp:post_list')
 
+    def delete(self, request, *args, **kwargs):#עשיתי אובררייד לקלאס בייסד ויו של הדיליט ככה שרק מי שיצר את הפוסט יוכל למחוק אותו
+        if (Post.author == request.user.username):
+            return super().delete(request, *args, **kwargs)
+        else:
+            return HttpResponse('You are not the owner of this Post! You can not delete it!')
 
 
 ############################################################################################
@@ -179,7 +184,7 @@ def personalposts(request, username):
         items = Post.objects.filter(author__username=username)
         return render(request, 'TheApp/personalposts.html', {'items':items})
     else:
-        return HttpResponse('You are not {} of this comment. Access denied'.format(username))
+        return HttpResponse('You are not {}. Access denied'.format(username))
 
 
 def top(request):
