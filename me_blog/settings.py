@@ -127,6 +127,6 @@ STATICFILES_DIRS = [STATIC_DIR,]
 
 #MEDIA
 MEDIA_ROOT = MEDIA_DIR
-MEDIA_URL = '/me_blog/media/'
+MEDIA_URL = '/media/'
 
 LOGIN_URL = '/TheApp/user_login'
