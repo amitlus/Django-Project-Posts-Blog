@@ -5,7 +5,7 @@
 
 {% for item in items %}
   <div class="container" style="border-style:ridge; border-radius: 5px;">
-      <h4><a href="{% url 'TheApp:post_detail' pk=item.pk %}">{{item|linebreaks}}</a></h4>
+      <h4 id="nav"><a href="{% url 'TheApp:post_detail' pk=item.pk %}">{{item|linebreaks}}</a></h4>
       <p>Published on: {{item.create_date|date:"D M Y"}}</p>
       <p>By: {{item.author}}</p>
       <a href="{% url 'TheApp:post_detail' pk=item.pk %}">Comments: {{ item.comments.count }}</a>
