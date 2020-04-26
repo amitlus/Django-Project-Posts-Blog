@@ -12,6 +12,7 @@ from TheApp.forms import PostForm, CommentForm
 from django.urls import reverse_lazy
 from django.utils import timezone
 import random
+from django.db.models import Q
 
 
 # Create your views here.
@@ -190,3 +191,16 @@ def personalposts(request, username):
 def top(request):
     top_posts = Post.objects.order_by('-post_views')# מסדר לפי צפיות מהגדול לקטן, בלי המינוס זה יהיה הפוך
     return render(request, 'TheApp/top.html', {'top_posts':top_posts})
+
+
+def search(request):
+    query_list = Post.objects.all()
+    query = request.GET.get("q")
+    if query:
+        query_list = query_list.filter(
+        Q(title__icontains=query)|
+        Q(text__icontains=query)
+        ).distinct()
+    else:
+        query_list = []
+    return render(request, 'TheApp/results.html' , {'query_list':query_list})

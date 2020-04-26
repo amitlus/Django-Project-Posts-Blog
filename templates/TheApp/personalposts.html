@@ -4,7 +4,7 @@
 <div class="container" style="padding-bottom: 130px; margin-top:50px;">
 
 {% for item in items %}
-  <div class="container" style="border-style:ridge; border-radius: 5px;">
+  <div class="container Misgeret">
       <h4 id="nav"><a href="{% url 'TheApp:post_detail' pk=item.pk %}">{{item|linebreaks}}</a></h4>
       <p>Published on: {{item.create_date|date:"D M Y"}}</p>
       <p>By: {{item.author}}</p>

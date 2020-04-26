@@ -18,5 +18,7 @@ urlpatterns = [
     path('explore/', views.PostListView.as_view(), name='post_list'),
     path('personalposts/<username>/', views.personalposts, name='personalposts'),
     path('topposts/', views.top, name='top_posts'),
+    path('results/', views.search, name='search'),
+
 
 ]

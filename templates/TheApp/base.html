@@ -51,6 +51,17 @@
                       <li><a class="nav-link" id='nav' href="{% url 'TheApp:post_list' %}">Explore</a></li>
                       <li><a class="nav-link" id='nav' href="{% url 'TheApp:top_posts' %}">Top Posts</a></li>
 
+                      <li>
+                        {% csrf_token %}
+                      <form action="{% url 'TheApp:search' %}" class="navbar-form navbar-right">
+                             <div class="input-group"><!-- בזכות הקלאס הזה הסבמיט והסירץ נשארים באותה שורה-->
+                               <input type="text" name="q" class="form-control" placeholder="Search" style="width: 120px;">
+                               <input class="form-control" placeholder="Submit" type="submit" style="width: 100px;">
+                             </div>
+                           </form>
+                         </li>
+
+
                       {% else %}
                       <li><a class= 'nav-link' href="{% url 'TheApp:user_login' %}">Login</a></li>
                       {% endif %}
