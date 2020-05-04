@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from TheApp.forms import UserForm, UserProfileInfoForm
-from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -9,7 +8,7 @@ from. import models
 from TheApp.models import Post, Comment, UserProfileInfo
 from django.contrib.auth.mixins import LoginRequiredMixin
 from TheApp.forms import PostForm, CommentForm
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 import random
 from django.db.models import Q
@@ -195,7 +194,7 @@ def top(request):
 
 def search(request):
     query_list = Post.objects.all()
-    query = request.GET.get("q")
+    query = request.GET.get("q")#q זה השם שנתנו למקום בו מכניסים את הערך של החיפוש בבייס טמפלייט
     if query:
         query_list = query_list.filter(
         Q(title__icontains=query)|
