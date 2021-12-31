@@ -1,0 +1,20 @@
+{% extends "TheApp/base.html" %}
+{% load static %}
+{% block body_block %}
+
+  {% if query_list %}
+
+<div class="container" style = "padding-bottom: 130px; margin-top:70px;">
+
+    {% for q in query_list %}
+      <div class="Misgeret">
+        <h4><a href="{% url 'TheApp:post_detail' pk=q.pk %}">{{ q.title }}</a></h4>
+      </div>
+      {% endfor %}
+</div>
+  {% else %}
+    <p>No results found!</p>
+  {% endif %}
+
+
+{% endblock %}

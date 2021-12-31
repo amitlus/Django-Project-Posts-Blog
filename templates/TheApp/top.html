@@ -1,0 +1,21 @@
+{% extends "TheApp/base.html" %}
+{% block body_block %}
+
+<div class="container" style = "padding-bottom: 130px; margin-top:70px;">
+{% for post in top_posts|slice:":5" %}
+<div class="Misgeret">
+
+
+<h4><a href="{% url 'TheApp:post_detail' pk=post.pk %}">{{ post.title }}</a></h4>
+
+<p>Published on: {{post.create_date|date:"D M Y"}}</p>
+<p>By: {{post.author}}</p>
+<p>Views: {{ post.post_views }}</p>
+
+
+</div>
+<br>
+{% endfor %}
+</div>
+
+{% endblock %}

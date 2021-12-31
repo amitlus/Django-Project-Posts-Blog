@@ -1,0 +1,65 @@
+{% extends "TheApp/base.html" %}
+{% load static %}
+{% block body_block %}
+
+
+<div class="container" style="margin-top:70px; margin-bottom:20px;">
+  <h1>{{post.title}}</h1>
+
+<div style="margin-bottom:20px;">{{ post.create_date }}</div>
+
+
+<p>{{ post.text }}</p>
+
+<p>Created By: {{ post.author }}</p>
+
+<div class="container">
+  <img style="height: 7px;
+    width: 10px;" src="{{ post.userprofileinfo_set.profile_pic.url }}" alt="No Pic">
+</div>
+
+<!--כל משתמש מחובר יראה את הכפתור של הוספת התגובה -->
+{% if user.is_authenticated %}
+
+  <a class='btn btn-primary btn-comment' href="{% url 'TheApp:add_comment_to_post' pk=post.pk %}">Add Comment</a>
+
+
+<!-- רק אם הפוסט שייך למשתמש הנוכחי הוא יראה את הכפתורים של המחיקה והעריכה. לגבי הפעולה עצמה וההגעה לדף יש פונקציה שמגבילה את הכניסה -->
+  {% if user == post.author %}
+
+    <a class='btn btn-primary' href="{% url 'TheApp:post_edit' pk=post.pk %}">EDIT</a>
+
+    <a class='btn btn-primary' href="{% url 'TheApp:post_remove' pk=post.pk %}">DELETE</a>
+
+  {% endif %}
+{% endif %}
+</div>
+
+<div class="container" style="margin-bottom:150px;">
+  {% for comment in post.comments.all %}
+  <div class="Misgeret" style= "margin-bottom:20px;">
+
+  <br>
+  {{comment.create_date}}
+  <p>{{comment.text|linebreaks}}</p> <!-- פילטר שיוצר רווח שורה -->
+  <p>Posted by: {{comment.author}}</p>
+
+
+<!-- אם המשתמש מחובר והוא זה שכתב את התגובה או את הפוסט, הוא יהיה רשאי למחוק את התגובה -->
+  {% if user.is_authenticated %}
+    {% if user.username == comment.author or user == post.author %} <!-- כי פוסט.אוטור הוא למעשה מופע של User אז צריך להשוות את היוזר ולא את היוזר.שם -->
+
+    <a style="margin-bottom:20px;" class='btn btn-primary' href="{% url 'TheApp:comment_remove' pk=comment.pk %}">Remove</a>
+
+
+  {% endif %}
+  </div>
+{% endif %}
+  {% empty %}
+  <p>No Comments</p>
+  {% endfor %}
+
+
+</div>
+
+{% endblock %}

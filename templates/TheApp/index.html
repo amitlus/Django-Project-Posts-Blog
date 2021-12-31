@@ -1,0 +1,179 @@
+
+{% extends "TheApp/base.html" %}
+
+{% load static %}
+
+{% block body_block %}
+
+
+
+<div class="bd-example">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static "images/1920x1080-placeholder.png" %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "images/1920x1080-placeholder.png" %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static "images/1920x1080-placeholder.png" %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+
+
+<!-- Page Content -->
+<div class="container">
+
+  <h1 class="my-4">Top Posts</h1>
+
+  <!-- Marketing Icons Section -->
+  <div class="row">
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <h4 class="card-header">Card Title</h4>
+        <div class="card-body">
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <h4 class="card-header">Card Title</h4>
+        <div class="card-body">
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <h4 class="card-header">Card Title</h4>
+        <div class="card-body">
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <!-- Portfolio Section -->
+  <h2>Portfolio Heading</h2>
+
+  <div class="row">
+    <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project One</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Two</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Project Three</a>
+          </h4>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Features Section -->
+  <div class="row" style="margin-top:20px;">
+      <h2>מה בניתי באתר הזה?</h2>
+
+      <ul>
+        <li>Registration, Login & Logout Interface</li>
+        <li>Posts & Comments System</li>
+        <li>Explore Page That Includes 4 Posts By Random Users From Any Date</li>
+        <li>Personal Posts Page That Includes All The Current Logged In User's Posts</li>
+        <li>Top Posts Page That Includes The 5 Most Viewd Posts (Using A View Counter I Made Using Models Fields & Views)</li>
+        <li>A Basic HTML Structure & CSS Using BootStrap Basic Style</li>
+        <li>Only The Owners Of Their Data Can Remove Or Update It. Even When Trying To Reach It With The URL Itself You Get 404 Error If You Are Not The Owner</li>
+        <li>Used Custom Filter Just For Practice And Implemented It On The 'New Post' Page</li>
+        <li>A Dynamic Url Path To The Personal Posts Page By The Current User Name</li>
+      </ul>
+      <p>All In All I Used- Urls, Templates, Template Tags, Views, CBV, Generic Views, Forms, ModelForms, Filters, Libraries(TimeZone for ex.), The Built In User Model, And Much More Things As You Can See In My Code Itself</p>
+</div>
+
+      <h2>Still In Progress:</h2>
+      <ul>
+        <li>Adding profile pic next to the author of the Post</li>
+        <li>Adding some JS</li>
+      </ul>
+
+
+
+
+  <!-- /.row -->
+
+  <div class="row" style = "margin:auto;">
+<p>....................................................................................................................................................................................................................................</p>
+</div>
+
+  <!-- Call to Action Section -->
+
+    <div class="row" style = "padding-bottom: 130px; margin:auto;">
+      <a class="btn btn-lg btn-secondary btn-block" href="#">חזרה לראש העמוד</a>
+    </div>
+  </div>
+
+
+
+
+
+<!-- /.container -->
+{% endblock %}

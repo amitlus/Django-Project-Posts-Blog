@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Me Post</title>
+
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--  The BootStrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Custom styles for this template -->
+<link rel="stylesheet" href="{% static "css/style.css" %}"/>
+
+
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <div class="fixed-top">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'TheApp:index' %}">ME-POST</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+
+
+            {% if user.is_authenticated %}
+                      <li><a class= 'nav-link' id='nav' href="{% url 'logout' %}">Logout</a></li>
+                      <li><a class="nav-link" id='nav' href="{% url 'TheApp:personalposts' username=user.username %}">{{ user.username }}</a></li>
+                      <li><a class="nav-link" id='nav' href="{% url 'TheApp:post_form' %}">New Post</a></li>
+                      <li><a class="nav-link" id='nav' href="{% url 'TheApp:post_list' %}">Explore</a></li>
+                      <li><a class="nav-link" id='nav' href="{% url 'TheApp:top_posts' %}">Top Posts</a></li>
+
+                      <li>
+                        {% csrf_token %}
+                      <form action="{% url 'TheApp:search' %}" class="navbar-form navbar-right">
+                             <div class="input-group"><!-- בזכות הקלאס הזה הסבמיט והסירץ נשארים באותה שורה-->
+                               <input type="text" name="q" class="form-control" placeholder="Search" style="width: 120px;">
+                               <input class="form-control" placeholder="Submit" type="submit" style="width: 100px;">
+                             </div>
+                           </form>
+                         </li>
+
+
+                      {% else %}
+                      <li><a class= 'nav-link' href="{% url 'TheApp:user_login' %}">Login</a></li>
+                      {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    </div>
+
+
+    <!-- Footer -->
+    <div class="fixed-bottom" id="bottom">
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; ME-POST 2020</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+    </div>
+
+
+
+<div class="container">
+
+  {% block body_block %}
+
+  {% endblock %}
+</div>
+<script src="{% static "js/deco.js" %}"></script>
+  </body>
+</html>
