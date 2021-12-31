@@ -7,14 +7,14 @@ For me: (When I'll try to run it again in 2 years haha)
 1. Download a clone of the project
 2. Open in the IDE (PyCharm or else)
 3. In the Terminal type:
-python -m pip install -U pip // (Install pip)
-pip install virtualenv // (Install virtual environment)
-virtualenv nameOfEnvIWant // (Set Virtual environment)
-cd nameOfEnvIWant
-cd Scripts
-activate
-pip install django // (If not installed already)
-cd ..
-python manage.py runserver // (In the project directory where manage.py lays
+4. python -m pip install -U pip // (Install pip)
+5. pip install virtualenv // (Install virtual environment)
+6. virtualenv nameOfEnvIWant // (Set Virtual environment)
+7. cd nameOfEnvIWant
+8. cd Scripts
+9. activate
+10. pip install django // (If not installed already)
+11. cd ..
+12. python manage.py runserver // (In the project directory where manage.py lays
 
 
