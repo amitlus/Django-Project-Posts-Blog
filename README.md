@@ -1,5 +1,9 @@
 # Django-Project-Posts-Blog
-My first project- coded 2 years ago before starting Computer Science degree in the University.
+My first coding project- coded 2 years ago before starting Computer Science degree in the University.  
+I learned everything by my own online.  
+During this project I realized that I want to be a programmer, and then I signed-up to my CS degree.
+
+UPDATE:  
 On the first day of 2022 I checked if it runs, and had to change "load staticfiles" to "load static" in Templates/index.html following Django new version.
 
 For me: (When I'll try to run it again in 2 years haha)
@@ -15,6 +19,6 @@ For me: (When I'll try to run it again in 2 years haha)
 9. activate
 10. pip install django // (If not installed already)
 11. cd ..
-12. python manage.py runserver // (In the project directory where manage.py lays
+12. python manage.py runserver // (In the project directory where manage.py live
 
 
