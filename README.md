@@ -1,6 +1,10 @@
 # Django-Project-Posts-Blog
 My first coding project- coded 2 years ago (in 2020) before starting Computer Science degree in the University.  
 I learned everything by my own online.  
+
+Coded using Python and Django Framework, basic HTML & CSS and **one** method of JavaScript (wanted to try adding JS to the project).
+As I said, I learn all from zero in few months, so the code is quite basic and not professional.
+
 During this project I realized that I want to be a programmer, and then I signed-up to my CS degree.  
   
   
